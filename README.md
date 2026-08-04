@@ -85,7 +85,7 @@ Real Twilio SMS messages triggered by abnormal readings during testing:
    - Twilio SID / Auth Token / phone numbers
 5. Flash to your ESP8266 NodeMCU and open the Serial Monitor at 115200 baud
 
-> ⚠️ **Never commit real credentials.** Use a separate `secrets.h` (gitignored) or environment-specific config if deploying beyond a demo.
+> ⚠️ Security note: This repository uses placeholder credentials. For your own deployment, store real WiFi, ThingSpeak, and Twilio credentials in a separate secrets.h file and add it to .gitignore — never commit credentials directly to version control.
 
 ---
 

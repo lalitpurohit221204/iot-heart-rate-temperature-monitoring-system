@@ -110,4 +110,4 @@ The current version instead detects a beat as a **rise relative to the previous 
 
 ## 👥 Team
 
-Jatin Gaur · Harsh Gupta · Krish Gupta · Karan Sankhla · Karan Rathor · Lalit Purohit · Devraj Maheshwari
+Lalit Purohit · Harsh Gupta · Krish Gupta · Karan Sankhla · Karan Rathor · Jatin Gaur

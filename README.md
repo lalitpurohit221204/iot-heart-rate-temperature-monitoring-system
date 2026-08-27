@@ -72,13 +72,15 @@ Real Twilio SMS messages triggered by abnormal readings during testing:
 
 ![Circuit Diagram](docs/circuit_diagram.png)
 
+> ⚠️ Diagram note: this sketch labels the heartbeat sensor as a MAX30102 (I2C), but the current `heart_rate_monitor.ino` code reads a plain analog pulse sensor on pin A0 — the two don't match. The code in this repo is the source of truth; if you're wiring from the diagram, use an analog sensor on A0 instead of an I2C MAX30102, or update the code to use the MAX30102 library if that's the sensor you actually have.
+
 ---
 
 ## 🚀 Getting Started
 
 1. Clone this repo
 2. Open `heart_rate_monitor.ino` in Arduino IDE
-3. Install required libraries: `ESP8266WiFi`, `ESP8266HTTPClient`, `ThingSpeak`, `Adafruit_SSD1306`, `Adafruit_GFX`
+3. Install required libraries: `ESP8266WiFi`, `ESP8266HTTPClient`, `ThingSpeak`, `Adafruit_SSD1306`, `Adafruit_GFX`, `OneWire`, `DallasTemperature` (the `WiFiClientSecure` class used for the Twilio HTTPS request ships with the ESP8266 board package, no separate install needed)
 4. Replace the placeholder credentials at the top of the file with your own:
    - WiFi SSID / password
    - ThingSpeak channel number + Write API key

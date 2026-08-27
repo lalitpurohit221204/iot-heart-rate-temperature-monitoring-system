@@ -22,6 +22,7 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_GFX.h>
 #include <ESP8266WiFi.h>
+#include <WiFiClientSecure.h>
 #include <ESP8266HTTPClient.h>
 #include <ThingSpeak.h>
 #include <OneWire.h>
@@ -32,7 +33,7 @@ WiFiClient client;
 
 // ---------------- Pin Definitions ----------------
 const int sensorPin = A0;   // Pulse sensor analog input
-#define STATUS_LED   8       // D8 - status/heartbeat LED
+#define STATUS_LED   15      // D8 - status/heartbeat LED (GPIO15 = D8 on NodeMCU)
 #define BUZZER_PIN   12      // D6 - buzzer
 #define ONE_WIRE_BUS 4        // D2 - DS18B20 data pin
 
@@ -169,6 +170,11 @@ void loop() {
 // ---------------- Twilio SMS Alert ----------------
 void sendSMSAlert(int bpm) {
   Serial.println("ALERT: Abnormal Heart Rate Detected!");
+
+  // Sound the buzzer to give a local audible alert alongside the SMS
+  digitalWrite(BUZZER_PIN, HIGH);
+  delay(1000);
+  digitalWrite(BUZZER_PIN, LOW);
 
   WiFiClientSecure secureClient;
   secureClient.setInsecure(); // For testing only; use certificate validation in production
